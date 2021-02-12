@@ -1,25 +1,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Comentarios = new Schema({
+const Categorias = new Schema({
 
-    id_comentario: {
+    id_categoria: {
         type: Number,
-        required: false,
+        required: true,
       },
       nome:{
         type: String,
         required: true,
       },
-      msg:{
+      chave:{
         type: String,
         required: true,
       },
-      data_cadastro:{
-        type: Date,
-        default:Date.now(),
+      qtd:{
+        type: Number,
         required: true,
       },
 });
 
-mongoose.model("comentarios", Comentarios);
+mongoose.model("categorias", Categorias);

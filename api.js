@@ -1,10 +1,12 @@
 require("./model/Produtos");
 require("./model/Comentarios");
+require("./model/Categorias");
 require("./bd/conexao");
 
 const mongoose = require("mongoose");
 const Produtos = mongoose.model("produtos");
 const Comentarios = mongoose.model("comentarios");
+const Categorias = mongoose.model("categorias");
 
 const express = require("express");
 const app=express();
@@ -29,27 +31,42 @@ app.get('/comentarios', async (req, res) => {// pega todos comentários
     res.json(comentariosJson);
   });
 
-app.post('/comentario/:nome/:msg', (req,res)=>{// Cadastra novo comentário
-    new Comentarios({
-        nome:  req.params.nome,
-        msg:   req.params.msg
-    })
-    .save()
-    .then(x => {
-        res.status(200).send({ mesage: "Comentario cadastrado com sucesso!'" });
-    }).catch(e => {
-        res.status(400).send({
-            message: '[ERRO] Falha durante cadastro!',
-            data: e
-        });
+  app.get('/categorias', async (req, res) => {// pega todos comentários
+    const categoriaResponse = await Categorias.find();
+    const categoriaJson = await categoriaResponse;
+  
+    res.json(categoriaJson);
+
+    req.header('Access-Control-Allow-Origin:*');
+    req.header('Content-type: application/json');
+  });
+  
+  app.get('/categorias/:tipo', async (req, res) => {// pega todos comentários
+    const tipo = req.params.tipo;
+    const categoriaResponse = await Categorias.find({'chave': tipo});
+    const categoriaJson = await categoriaResponse;
+  
+    res.json(categoriaJson);
+
+    req.header('Access-Control-Allow-Origin:*');
+    req.header('Content-type: application/json');
+  });
+
+app.post('/comentario', async (req,res, next)=>{// Cadastra novo comentário
+    res.header('Access-Control-Allow-Origin:*');
+    res.header('Content-type: application/json');
+
+    const comentario = new Comentarios({
+        nome:  req.body.nome,
+        msg:   req.body.msg
     });
-    res.sendStatus(200);
+    comentario.save()
 });
 
 app.use(function( req, res, next) {
     res.status(404).end("Opsss... Pagina nao encontrada");
 })
 
-app.listen(5001,()=>{
-    console.log("Servidor Node Ativo em http://localhost:5001");
+app.listen(5002,()=>{
+    console.log("Servidor Node Ativo em http://localhost:5002");
 });
