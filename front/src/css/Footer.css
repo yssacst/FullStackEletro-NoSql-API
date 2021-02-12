@@ -1,0 +1,21 @@
+.copyFooter{
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: red;
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 0;
+}
+.rodape{
+    margin-top:2px;
+    border-top:1px solid rgb(238, 238, 238);
+    border-bottom:1px solid rgb(238, 238, 238);
+    text-align: center;
+}
+.formaDePagamento{
+    color: red;
+    font-weight: bold;
+    margin:0;
+    padding:0;
+}

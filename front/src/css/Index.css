@@ -1,0 +1,26 @@
+*{
+    text-align: center;
+    color:gray;
+}
+.carroselbox{
+    height: 300px;
+    border-radius: 5px ;
+    box-shadow: 5px 5px 10px black;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.carroselbox img{
+    height:300px;
+    border-radius: 5px ;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.content{
+    text-align: center;
+}
+.mt-10{
+    margin-top: 100px;
+}

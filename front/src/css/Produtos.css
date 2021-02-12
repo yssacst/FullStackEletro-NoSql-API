@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding:0 0 50 0;
+    color:gray;
+}
+.boxProduto{
+    display: inline-block;
+    width: 250px;
+    margin-left: 1px;
+    margin-bottom: 2px;
+}
+.mt-10{
+    margin-top: 100px;
+}

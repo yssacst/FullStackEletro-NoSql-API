@@ -1,0 +1,8 @@
+.mt-10{
+    margin-top: 100px;
+}
+.form{
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(77, 48, 48);
+}
